@@ -1,0 +1,132 @@
+All the 3 class are listed below                                           
+-------------------------------------------------
+package sample;
+
+import org.testng.annotations.Test;
+
+public class ClassA {
+	@Test(priority=1)
+	public void methodAOne()
+	{
+		System.out.println("ClassA-MethodAOne");
+	}
+
+	@Test(priority=3)
+	public void methodATwo()
+	{
+		System.out.println("ClassA-MethodATwo");
+	}
+
+	@Test(priority=4)
+	public void methodAThree()
+	{
+		System.out.println("ClassA-MethodAThree");
+	}
+
+}
+
+
+------------------------------------------------------
+
+package sample;
+
+import org.testng.annotations.Test;
+
+public class ClassB {
+	@Test(priority=1)
+	public void methodBOne()
+	{
+		System.out.println("ClassB-MethodAOne");
+	}
+	
+	@Test(priority=3)
+	public void methodBTwo()
+	{
+		System.out.println("ClassB-MethodATwo");
+	}
+	
+	@Test(priority=4)
+	public void methodBThree()
+	{
+		System.out.println("ClassB-MethodAThree");
+	}
+
+}
+
+
+-------------------------------------------------------------------
+
+package sample;
+
+import org.testng.annotations.Test;
+
+public class ClassC {
+
+	@Test(priority=1)
+	public void methodCOne()
+	{
+		System.out.println("ClassC-MethodAOne");
+	}
+	
+	@Test(priority=3)
+	public void methodCTwo()
+	{
+		System.out.println("ClassC-MethodATwo");
+	}
+	
+
+
+}
+
+
+
+TestNg XML File
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+  <test thread-count="5" name="Test">
+    <classes>
+      <class name="sample.ClassA">
+		<methods>
+			<include name="methodAThree"></include>
+		</methods>  
+	  </class>
+      <class name="sample.ClassB">
+		  <methods>
+			  <exclude name="methodBThree"></exclude>
+		  </methods>
+	  </class>
+      <class name="sample.ClassC"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->
+
+
+
+
+
+
+
+----------------------------------------------------------------
+OUTPUT
+
+
+
+[RemoteTestNG] detected TestNG version 7.7.1
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+ClassA-MethodAThree
+ClassB-MethodAOne
+ClassB-MethodATwo
+ClassC-MethodAOne
+ClassC-MethodATwo
+
+===============================================
+Suite
+Total tests run: 5, Passes: 5, Failures: 0, Skips: 0
+===============================================
+
+
