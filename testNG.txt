@@ -1,3 +1,4 @@
+-We can create as many as testng XML File we want
 All the 3 class are listed below                                           
 -------------------------------------------------
 package sample;
